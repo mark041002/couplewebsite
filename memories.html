@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Süße Erinnerungen 💕</title>
+    <link rel="stylesheet" href="memories-styles.css">
+</head>
+<body>
+    <!-- Floating Hearts -->
+    <div class="floating-hearts" id="floating-hearts"></div>
+
+    <div class="container">
+        <header>
+            <h1>Unsere Erinnerungen</h1>
+            <p class="subtitle">Jedes Foto dokumentiert ein Teil unserer Geschichte 📸💕</p>
+            <a href="index.html" class="back-button">← Zurück zur Startseite</a>
+        </header>
+
+        <div class="gallery-container">
+            <div class="navigation">
+                <button id="prev-btn" class="nav-btn">⏮️ Vorheriges</button>
+                <div class="photo-counter">
+                    <span id="current-photo">1</span> von <span id="total-photos">0</span>
+                </div>
+                <button id="next-btn" class="nav-btn">Nächstes ⏭️</button>
+            </div>
+
+            <div class="photo-stack" id="photo-stack">
+                <!-- Fotos werden hier dynamisch eingefügt -->
+            </div>
+
+            <div class="photo-info" id="photo-info">
+                <div class="photo-title" id="photo-title">Lade Erinnerungen...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- EXIF.js Bibliothek für Metadaten-Extraktion -->
+    <script src="https://cdn.jsdelivr.net/npm/exif-js@2.3.0/exif.js"></script>
+    <script src="memories-script.js"></script>
+</body>
+</html>

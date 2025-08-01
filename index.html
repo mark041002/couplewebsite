@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unsere zauberhafte Liebesgeschichte 💕</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ffeef8 0%, #ffe0f0 50%, #ffd1e8 100%);
+            font-family: 'Quicksand', cursive;
+            color: #6b2c56;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Floating Hearts Animation */
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: #ff69b4;
+            opacity: 0.7;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Login Screen Styles */
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            position: relative;
+            z-index: 1;
+            padding: 20px;
+        }
+
+        .login-box {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(15px);
+            border-radius: 30px;
+            padding: 50px 40px;
+            box-shadow: 0 20px 50px rgba(255, 105, 180, 0.3);
+            border: 2px solid rgba(255, 105, 180, 0.1);
+            text-align: center;
+            animation: slideDown 1s ease-out;
+            max-width: 450px;
+            width: 100%;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .login-title {
+            font-family: 'Pacifico', cursive;
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #ff69b4, #e75480, #ff1493);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .login-subtitle {
+            font-size: 1.2em;
+            color: #b565a7;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .input-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .password-input {
+            width: 100%;
+            padding: 20px 25px;
+            border: 2px solid rgba(255, 105, 180, 0.2);
+            border-radius: 25px;
+            font-size: 1.1em;
+            font-family: 'Quicksand', cursive;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+            outline: none;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        .password-input:focus {
+            border-color: #ff69b4;
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.4);
+            transform: scale(1.02);
+        }
+
+        .password-input::placeholder {
+            color: #b565a7;
+            letter-spacing: 1px;
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 18px 30px;
+            background: linear-gradient(135deg, #ff69b4, #e75480);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2em;
+            font-family: 'Quicksand', cursive;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-button:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .login-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 105, 180, 0.5);
+        }
+
+        .login-button:hover:before {
+            left: 100%;
+        }
+
+        .login-button:active {
+            transform: translateY(-1px);
+        }
+
+        .error-message {
+            color: #e75480;
+            margin-top: 15px;
+            font-size: 1em;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .error-message.show {
+            opacity: 1;
+            animation: shake 0.5s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        /* Main Website Styles (hidden initially) */
+        .main-website {
+            display: none;
+            position: relative;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 35px rgba(255, 105, 180, 0.2);
+            animation: slideDown 1s ease-out;
+            border: 2px solid rgba(255, 105, 180, 0.1);
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #ff69b4, #e75480, #ff1493);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            color: #b565a7;
+            margin-bottom: 25px;
+            animation: fadeIn 1.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .button-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        .cute-button {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-family: 'Quicksand', cursive;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cute-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .spotify-btn {
+            background: linear-gradient(135deg, #1db954, #1ed760);
+            color: white;
+        }
+
+        .memories-btn {
+            background: linear-gradient(135deg, #ff69b4, #e75480);
+            color: white;
+        }
+
+        .timer-section {
+            text-align: center;
+            padding: 40px 30px;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.15);
+            animation: slideUp 1s ease-out 0.3s both;
+            border: 1px solid rgba(255, 105, 180, 0.2);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .timer-title {
+            font-family: 'Pacifico', cursive;
+            font-size: 2.8em;
+            font-weight: 300;
+            color: #e75480;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .timer-display {
+            font-size: 1.4em;
+            color: #ff1493;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 15px;
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(255, 105, 180, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(255, 105, 180, 0.6);
+            }
+        }
+
+        .love-message {
+            font-size: 1.2em;
+            color: #b565a7;
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .login-box {
+                padding: 40px 30px;
+                margin: 20px;
+            }
+
+            .login-title {
+                font-size: 2.2em;
+            }
+
+            h1 {
+                font-size: 2.5em;
+            }
+            
+            .timer-title {
+                font-size: 2.2em;
+            }
+            
+            .button-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Hearts -->
+    <div class="floating-hearts" id="floating-hearts"></div>
+
+    <!-- Login Screen -->
+    <div class="login-container" id="login-screen">
+        <div class="login-box">
+            <p class="login-subtitle">Bitte gib unser geheimes Datum ein</p>
+            <div class="input-group">
+                <input 
+                    type="password" 
+                    class="password-input" 
+                    id="password-field" 
+                    placeholder="Hier eingeben"
+                    maxlength="4"
+                    autocomplete="off"
+                >
+            </div>
+            <button class="login-button" onclick="checkPassword()">
+                Eingeben
+            </button>
+            <div class="error-message" id="error-message">
+                Das ist nicht unser Datum... 💔
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Website (hidden initially) -->
+    <div class="main-website" id="main-website">
+        <div class="container">
+            <header>
+                <h1>Unsere zauberhafte Liebesgeschichte</h1>
+                <p class="subtitle">Du bist das schönste Geschenk, das ich mir wünschen könnte! 💖✨</p>
+                <div class="button-container">
+                    <a href="https://open.spotify.com/playlist/1PY42uZQSFqxWgPeTzVhyv?si=8fd1e904d2894dc7&pt=06a47093872308495a7b9f324a0dd9b1" target="_blank" class="cute-button spotify-btn">
+                        🎵 Unsere Lieblingssongs
+                    </a>
+                    <button onclick="window.location.href='memories.html'" class="cute-button memories-btn">
+                        📸 Süße Erinnerungen
+                    </button>
+                </div>
+            </header>
+
+            <section class="timer-section">
+                <h2 class="timer-title">Unsere Liebesgeschichte begann vor:</h2>
+                <div id="time-elapsed" class="timer-display"></div>
+                <div class="love-message">💕 Seit dem 1. März 2025 bist du der wichtigste Teil meines Lebens! 💕</div>
+                <div class="love-message">Und das wirst du auch für immer bleiben! </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        // Floating Hearts Animation
+        function createFloatingHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = ['💖', '💕', '💗', '💘', '💝'][Math.floor(Math.random() * 5)];
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 8 + 8) + 's';
+            heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+            document.getElementById('floating-hearts').appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 18000);
+        }
+
+        setInterval(createFloatingHeart, 1500);
+
+        // Erstelle gleich am Anfang ein paar Herzen
+        for(let i = 0; i < 3; i++) {
+            setTimeout(() => createFloatingHeart(), i * 500);
+        }
+
+        // Passwort-Überprüfung
+        function checkPassword() {
+            const inputField = document.getElementById('password-field');
+            const errorMessage = document.getElementById('error-message');
+            const loginScreen = document.getElementById('login-screen');
+            const mainWebsite = document.getElementById('main-website');
+            
+            const enteredPassword = inputField.value.trim();
+            
+            // Passwort: 0103
+            if (enteredPassword === '0103') {
+                // Erfolgreicher Login
+                loginScreen.style.display = 'none';
+                mainWebsite.style.display = 'block';
+                updateTimer();
+                
+                // Speichere Login-Status
+                sessionStorage.setItem('logged_in', 'true');
+            } else {
+                showError();
+            }
+            
+            // Leere das Eingabefeld
+            inputField.value = '';
+        }
+
+        function showError() {
+            const errorMessage = document.getElementById('error-message');
+            const inputField = document.getElementById('password-field');
+            
+            errorMessage.classList.add('show');
+            inputField.style.borderColor = '#e75480';
+            inputField.style.transform = 'scale(1.02)';
+            
+            setTimeout(() => {
+                errorMessage.classList.remove('show');
+                inputField.style.borderColor = 'rgba(255, 105, 180, 0.2)';
+                inputField.style.transform = 'scale(1)';
+            }, 3000);
+        }
+
+        // Enter-Taste Support
+        document.getElementById('password-field').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+
+        // Nur Zahlen erlauben
+        document.getElementById('password-field').addEventListener('input', function(e) {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+
+        // Timer Funktionalität
+        function updateTimer() {
+            const startDate = new Date('2025-03-01T00:00:00');
+            const now = new Date();
+            
+            if (now < startDate) {
+                document.getElementById('time-elapsed').innerHTML = '<strong>0</strong> Monate, <strong>0</strong> Wochen und <strong>0</strong> Tage 💖';
+                return;
+            }
+            
+            // Präzise Berechnung mit echten Kalenderdaten
+            let years = now.getFullYear() - startDate.getFullYear();
+            let months = now.getMonth() - startDate.getMonth();
+            let days = now.getDate() - startDate.getDate();
+            
+            // Korrektur wenn der Tag noch nicht erreicht wurde
+            if (days < 0) {
+                months--;
+                const lastMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+                days += lastMonth.getDate();
+            }
+            
+            // Korrektur wenn der Monat noch nicht erreicht wurde
+            if (months < 0) {
+                years--;
+                months += 12;
+            }
+            
+            // Gesamtmonate berechnen
+            const totalMonths = years * 12 + months;
+            
+            // Wochen aus den übrigen Tagen berechnen
+            const weeks = Math.floor(days / 7);
+            const remainingDays = days % 7;
+            
+            // Schöne Ausgabe formatieren
+            let parts = [];
+            
+            if (totalMonths > 0) {
+                parts.push(`<strong>${totalMonths}</strong> Monat${totalMonths === 1 ? '' : 'en'}`);
+            }
+            
+            if (weeks > 0) {
+                parts.push(`<strong>${weeks}</strong> Woche${weeks === 1 ? '' : 'n'}`);
+            }
+            
+            if (remainingDays > 0 || parts.length === 0) {
+                parts.push(`<strong>${remainingDays}</strong> Tag${remainingDays === 1 ? '' : 'en'}`);
+            }
+            
+            let text = parts.join(', ');
+            if (parts.length > 1) {
+                const lastComma = text.lastIndexOf(', ');
+                text = text.substring(0, lastComma) + ' und ' + text.substring(lastComma + 2);
+            }
+            text = text + ' 💖';
+            
+            document.getElementById('time-elapsed').innerHTML = text;
+        }
+
+        // Prüfe ob bereits eingeloggt (optional)
+        window.addEventListener('load', function() {
+            if (sessionStorage.getItem('logged_in') === 'true') {
+                document.getElementById('login-screen').style.display = 'none';
+                document.getElementById('main-website').style.display = 'block';
+                updateTimer();
+            }
+        });
+
+        // Timer Update jede Stunde
+        setInterval(updateTimer, 3600000);
+    </script>
+</body>
+</html>

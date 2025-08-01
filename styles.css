@@ -1,0 +1,404 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #ffeef8 0%, #ffe0f0 50%, #ffd1e8 100%);
+    font-family: 'Quicksand', cursive;
+    color: #6b2c56;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Floating Hearts Animation */
+.floating-hearts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.heart {
+    position: absolute;
+    font-size: 20px;
+    color: #ff69b4;
+    opacity: 0.7;
+    animation: float 15s infinite linear;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.7;
+    }
+    90% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+header {
+    text-align: center;
+    padding: 40px 20px;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 15px 35px rgba(255, 105, 180, 0.2);
+    animation: slideDown 1s ease-out;
+    border: 2px solid rgba(255, 105, 180, 0.1);
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 3.5em;
+    margin-bottom: 15px;
+    background: linear-gradient(45deg, #ff69b4, #e75480, #ff1493);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.subtitle {
+    font-size: 1.3em;
+    color: #b565a7;
+    margin-bottom: 25px;
+    animation: fadeIn 1.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.button-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+.cute-button {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1em;
+    font-family: 'Quicksand', cursive;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+}
+
+.cute-button:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+}
+
+.cute-button:hover:before {
+    left: 100%;
+}
+
+.cute-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.spotify-btn {
+    background: linear-gradient(135deg, #1db954, #1ed760);
+    color: white;
+}
+
+.memories-btn {
+    background: linear-gradient(135deg, #ff69b4, #e75480);
+    color: white;
+}
+
+.timer-section {
+    text-align: center;
+    padding: 40px 30px;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(15px);
+    border-radius: 25px;
+    margin: 30px 0;
+    box-shadow: 0 10px 30px rgba(255, 105, 180, 0.15);
+    animation: slideUp 1s ease-out 0.3s both;
+    border: 1px solid rgba(255, 105, 180, 0.2);
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.timer-title {
+    font-family: 'Pacifico', cursive;
+    font-size: 2.8em;
+    font-weight: 300;
+    color: #e75480;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.timer-display {
+    font-size: 1.4em;
+    color: #ff1493;
+    margin: 20px 0;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 15px;
+    animation: glow 3s ease-in-out infinite;
+}
+
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(255, 105, 180, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(255, 105, 180, 0.6);
+    }
+}
+
+.love-message {
+    font-size: 1.2em;
+    color: #b565a7;
+    margin-top: 15px;
+    font-style: italic;
+}
+
+/* Erinnerungsseite Styles */
+.memories-container {
+    animation: slideIn 0.8s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.gallery-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.photo-stack {
+    position: relative;
+    width: 500px;
+    height: 400px;
+    margin-bottom: 40px;
+    perspective: 1000px;
+}
+
+.photo-frame {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    cursor: pointer;
+    border: 8px solid rgba(255, 255, 255, 0.9);
+    background: white;
+}
+
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.photo-frame.active {
+    z-index: 10;
+    transform: translateZ(0) scale(1);
+    opacity: 1;
+}
+
+.photo-frame.behind-1 {
+    z-index: 9;
+    transform: translateZ(-50px) scale(0.95) rotateY(-5deg);
+    opacity: 0.8;
+    filter: brightness(0.9);
+}
+
+.photo-frame.behind-2 {
+    z-index: 8;
+    transform: translateZ(-100px) scale(0.9) rotateY(-10deg);
+    opacity: 0.6;
+    filter: brightness(0.8);
+}
+
+.photo-frame.behind-3 {
+    z-index: 7;
+    transform: translateZ(-150px) scale(0.85) rotateY(-15deg);
+    opacity: 0.4;
+    filter: brightness(0.7);
+}
+
+.photo-frame.hidden {
+    z-index: 1;
+    transform: translateZ(-200px) scale(0.8);
+    opacity: 0;
+}
+
+.navigation {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.nav-btn {
+    background: linear-gradient(135deg, #ff69b4, #e75480);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    font-family: 'Quicksand', cursive;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(255, 105, 180, 0.3);
+    font-weight: 600;
+}
+
+.nav-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(255, 105, 180, 0.5);
+}
+
+.nav-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.photo-counter {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 15px 25px;
+    border-radius: 25px;
+    font-size: 1.1em;
+    color: #6b2c56;
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.2);
+    border: 1px solid rgba(255, 105, 180, 0.3);
+}
+
+.photo-info {
+    text-align: center;
+    margin-top: 20px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    max-width: 500px;
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.1);
+}
+
+.photo-title {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.8em;
+    color: #e75480;
+    margin-bottom: 10px;
+}
+
+.photo-description {
+    color: #b565a7;
+    font-size: 1.1em;
+    line-height: 1.5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5em;
+    }
+    
+    .timer-title {
+        font-size: 2.2em;
+        font-weight: 300;
+    }
+    
+    .button-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .photo-stack {
+        width: 350px;
+        height: 280px;
+    }
+    
+    .navigation {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .nav-btn {
+        padding: 12px 25px;
+        font-size: 1em;
+    }
+}

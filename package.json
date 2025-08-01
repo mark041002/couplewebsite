@@ -1,0 +1,27 @@
+{
+  "name": "sweet-couple-website",
+  "version": "1.0.0",
+  "description": "A romantic website for a couple, featuring a timer and a photo album.",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "live-server public",
+    "build": "webpack --mode production"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "webpack": "^5.64.4",
+    "webpack-cli": "^4.9.1",
+    "live-server": "^1.2.1"
+  },
+  "keywords": [
+    "couple",
+    "romantic",
+    "timer",
+    "photo album"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}

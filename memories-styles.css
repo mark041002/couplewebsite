@@ -1,0 +1,322 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #ffeef8 0%, #ffe0f0 50%, #ffd1e8 100%);
+    font-family: 'Quicksand', cursive;
+    color: #6b2c56;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Floating Hearts Animation */
+.floating-hearts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.heart {
+    position: absolute;
+    font-size: 20px;
+    color: #ff69b4;
+    opacity: 0.7;
+    animation: float 15s infinite linear;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.7;
+    }
+    90% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+header {
+    text-align: center;
+    padding: 30px 20px;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
+    margin-bottom: 40px;
+    box-shadow: 0 15px 35px rgba(255, 105, 180, 0.2);
+    border: 2px solid rgba(255, 105, 180, 0.1);
+    animation: slideDown 1s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 3.5em;
+    margin-bottom: 15px;
+    background: linear-gradient(45deg, #ff69b4, #e75480, #ff1493);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.subtitle {
+    font-size: 1.3em;
+    color: #b565a7;
+    margin-bottom: 20px;
+}
+
+.back-button {
+    background: linear-gradient(135deg, #ff69b4, #e75480);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 25px;
+    font-size: 1.1em;
+    font-family: 'Quicksand', cursive;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.back-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(255, 105, 180, 0.4);
+}
+
+.gallery-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.photo-stack {
+    position: relative;
+    width: 800px;
+    height: 600px;
+    margin-bottom: 40px;
+    perspective: 1000px;
+}
+
+.photo-frame {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    cursor: pointer;
+    border: 8px solid rgba(255, 255, 255, 0.9);
+    background: white;
+}
+
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.photo-frame.active {
+    z-index: 10;
+    transform: translateZ(0) scale(1);
+    opacity: 1;
+}
+
+.photo-frame.behind-1 {
+    z-index: 9;
+    transform: translateZ(-50px) scale(0.95) rotateY(-5deg);
+    opacity: 0.8;
+    filter: brightness(0.9);
+}
+
+.photo-frame.behind-2 {
+    z-index: 8;
+    transform: translateZ(-100px) scale(0.9) rotateY(-10deg);
+    opacity: 0.6;
+    filter: brightness(0.8);
+}
+
+.photo-frame.behind-3 {
+    z-index: 7;
+    transform: translateZ(-150px) scale(0.85) rotateY(-15deg);
+    opacity: 0.4;
+    filter: brightness(0.7);
+}
+
+.photo-frame.hidden {
+    z-index: 1;
+    transform: translateZ(-200px) scale(0.8);
+    opacity: 0;
+}
+
+.navigation {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.nav-btn {
+    background: linear-gradient(135deg, #ff69b4, #e75480);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    font-family: 'Quicksand', cursive;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(255, 105, 180, 0.3);
+    font-weight: 600;
+    min-width: 160px;
+}
+
+.nav-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(255, 105, 180, 0.5);
+}
+
+/* Entferne disabled styles und verwende opacity */
+.nav-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.photo-counter {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 15px 25px;
+    border-radius: 25px;
+    font-size: 1.1em;
+    color: #6b2c56;
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.2);
+    border: 1px solid rgba(255, 105, 180, 0.3);
+}
+
+.photo-info {
+    text-align: center;
+    margin-top: 20px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    max-width: 800px;
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.1);
+    animation: slideUp 1s ease-out 0.5s both;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.photo-title {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.8em;
+    color: #e75480;
+    margin-bottom: 10px;
+}
+
+.photo-description {
+    color: #b565a7;
+    font-size: 1.1em;
+    line-height: 1.5;
+}
+
+/* Responsive Design */
+@media (max-width: 1100px) {
+    .photo-stack {
+        width: 650px;
+        height: 480px;
+    }
+    
+    .photo-info {
+        max-width: 650px;
+    }
+}
+
+@media (max-width: 900px) {
+    .photo-stack {
+        width: 500px;
+        height: 400px;
+    }
+    
+    .photo-info {
+        max-width: 500px;
+    }
+}
+
+@media (max-width: 768px) {
+    .photo-stack {
+        width: 350px;
+        height: 280px;
+    }
+    
+    h1 {
+        font-size: 2.5em;
+    }
+    
+    .navigation {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .nav-btn {
+        padding: 12px 25px;
+        font-size: 1em;
+        min-width: 140px;
+    }
+    
+    .container {
+        padding: 15px;
+    }
+    
+    .photo-info {
+        max-width: 350px;
+    }
+}

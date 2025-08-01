@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unsere zauberhafte Liebesgeschichte 💕</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Floating Hearts -->
+    <div class="floating-hearts" id="floating-hearts"></div>
+
+    <!-- Hauptseite -->
+    <div class="container" id="main-page">
+        <header>
+            <h1>Unsere zauberhafte Liebesgeschichte</h1>
+            <p class="subtitle">Du bist das schönste Geschenk, das ich mir wünschen könnte! 💖✨</p>
+            <div class="button-container">
+                <a href="https://open.spotify.com/playlist/1PY42uZQSFqxWgPeTzVhyv?si=8fd1e904d2894dc7&pt=06a47093872308495a7b9f324a0dd9b1" target="_blank" class="cute-button spotify-btn">
+                    🎵 Unsere Lieblingssongs
+                </a>
+                <button id="memories-btn" class="cute-button memories-btn">
+                    📸 Süße Erinnerungen
+                </button>
+            </div>
+        </header>
+
+        <section class="timer-section">
+            <h2 class="timer-title">Unsere Liebesgeschichte begann vor:</h2>
+            <div id="time-elapsed" class="timer-display"></div>
+            <div class="love-message">💕 Seit dem 1. März 2025 bist du der wichtigste Teil meines Lebens! 💕</div>
+            <div class="love-message">Und dass wirst du auch für immer Bleiben! </div>
+            
+        </section>
+    </div>
+
+    <!-- Erinnerungsseite -->
+    <div class="container memories-container" id="memories-page" style="display: none;">
+        <header>
+            <h1>Unsere süßen Erinnerungen</h1>
+            <p class="subtitle">Jedes Foto erzählt unsere wundervolle Geschichte 📸💕</p>
+            <button id="back-btn" class="cute-button memories-btn">← Zurück zur Startseite</button>
+        </header>
+
+        <div class="gallery-container">
+            <div class="navigation">
+                <button id="prev-btn" class="nav-btn">⏮️ Vorheriges</button>
+                <div class="photo-counter">
+                    <span id="current-photo">1</span> von <span id="total-photos">0</span>
+                </div>
+                <button id="next-btn" class="nav-btn">Nächstes ⏭️</button>
+            </div>
+
+            <div class="photo-stack" id="photo-stack">
+                <!-- Fotos werden hier dynamisch eingefügt -->
+            </div>
+
+            <div class="photo-info" id="photo-info">
+                <div class="photo-title" id="photo-title">Lade Erinnerungen...</div>
+                <div class="photo-description" id="photo-description">Unsere schönsten Momente werden geladen...</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
